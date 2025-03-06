@@ -33,50 +33,52 @@ df.tail()
 
 #Segregating data to variables
 
-x = df.iloc[:,:-1].values
-print(x)
+X=df.iloc[:,:-1].values
+X
 
 
-y = df.iloc[:,1].values
-print(y)
+Y=df.iloc[:,1].values
+Y
 
 #Splitting train and test data
 from sklearn.model_selection import train_test_split
-x_train,x_test,y_train,y_test=train_test_split(x,y,test_size=1/3,random_state=0)
+X_train,X_test,Y_train,Y_test=train_test_split(X,Y,test_size=1/3,random_state=0)
 
 from sklearn.linear_model import LinearRegression
-regressor = LinearRegression()
-regressor.fit(x_train,y_train)
-y_pred = regressor.predict(x_test)
+regressor=LinearRegression()
+regressor.fit(X_train,Y_train)
+Y_pred=regressor.predict(X_test)
 
 #displaying predicted values
-print(y_pred)
+Y_pred
 
 #displaying actual values
-print(y_test)
+Y_test
 
 #Graph plot for training data
-plt.scatter(x_train,y_train,color='black')
-plt.plot(x_train,regressor.predict(x_train),color='blue')
-plt.title("Hours vs Scores(Training set)")
-plt.xlabel("Hours")
-plt.ylabel("Scores")
+plt.scatter(X_train,Y_train,color='orange')
+plt.plot(X_train,regressor.predict(X_train),color='red')
+plt.title('Hours vs Scores(Training Set)')
+plt.xlabel('Hours')
+plt.ylabel('Scores')
 plt.show()
 
 #Graph plot for test data
-plt.scatter(x_test,y_test,color='black')
-plt.plot(x_train,regressor.predict(x_train),color='red')
-plt.title("Hours vs Scores(Testing set)")
-plt.xlabel("Hours")
-plt.ylabel("Scores")
+plt.scatter(X_test,Y_test,color='purple')
+plt.plot(X_train,regressor.predict(X_train),color='yellow')
+plt.title('Hours vs Scores(Test Set)')
+plt.xlabel('Hours')
+plt.ylabel('Scores')
 plt.show()
 
-mse=mean_absolute_error(y_test,y_pred)
+mse=mean_squared_error(Y_test,Y_pred)
 print('MSE = ',mse)
-mae=mean_absolute_error(y_test,y_pred)
+
+mae=mean_absolute_error(Y_test,Y_pred)
 print('MAE = ',mae)
+
 rmse=np.sqrt(mse)
-print("RMSE= ",rmse)
+print('RMSE = ',rmse))
 ```
 
 ## Output:
