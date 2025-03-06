@@ -27,7 +27,9 @@ Developed by: ADARSH CHOWDARY R
 RegisterNumber: 212223040166 
 ```
 
-```
+
+
+```python
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
